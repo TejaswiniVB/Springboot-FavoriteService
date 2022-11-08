@@ -29,24 +29,27 @@ public class Favorite {
 
     @Column(name = "deleted")
     private boolean deleted;
+    
+    @Column(name="userName")
+    private String userName;
 
 	public String getFavoriteId() {
-		// TODO Auto-generated method stub
 		return favoriteId;
 	}
 
 	public String getFavoriteName() {
-		// TODO Auto-generated method stub
 		return favoriteName;
 	}
-
-	public void setUserName(String favoriteId2) {
-		// TODO Auto-generated method stub
-		this.favoriteId = favoriteId2;
-		
+	
+	public String getUserId() {
+		return userName;
 	}
 
-	public void setPassword(String favoriteName2) {
-		this.favoriteName = favoriteName2;
+	public void setfavoriteId(String favoriteId2) {
+		this.favoriteId = favoriteId2;
+	}
+
+	public void setusetId(String userName2) {
+		this.userName = userName2;
 	}
 }

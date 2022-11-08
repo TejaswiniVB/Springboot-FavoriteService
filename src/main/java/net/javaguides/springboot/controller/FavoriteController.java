@@ -27,28 +27,22 @@ public class FavoriteController {
  // build create FavoriteRecord REST API
     @PostMapping
     public Favorite createFavorite(@RequestBody Favorite fav) {
-    	// List<Favorite> favRec = favRepository.findByFavoriteId(fav.favoriteId);
-//     	Favorite addFav = fav.get(0);
-//     	if(addFav){
-//     		addFav.setDeleted(true);
-//     	}
 		return favRepository.save(fav);
     }
 
-    // build get FavoriteRecord by FavoriteId REST API
-    @GetMapping("{favId}")
-    public ResponseEntity<List<Favorite>> getFavoriteRecord(@PathVariable String favId){
-    	List<Favorite> user = favRepository.findByFavoriteId(favId);
+// build get FavoriteRecord by userId REST API
+    @GetMapping("{userName}")
+    public ResponseEntity<List<Favorite>> getFavoriteRecord(@PathVariable String userName){
+    	List<Favorite> user = favRepository.findByuserName(userName);
     	return ResponseEntity.ok(user);
     }
     
  // build delete FavoriteRecord REST API
-    @DeleteMapping("{favId}")
-    public ResponseEntity<HttpStatus> deleteFavoriteRecord(@PathVariable String favId){
-        List<Favorite> fav = favRepository.findByFavoriteId(favId);
-        Favorite deleteFav = fav.get(0);
-//         deleteFav.setDeleted(true);
-        favRepository.delete(deleteFav);
+    @DeleteMapping("{Id}")
+    public ResponseEntity<HttpStatus> deleteFavoriteRecord(@PathVariable long Id){
+//        List<Favorite> fav = favRepository.findById(Id);
+//        Favorite deleteFav = fav.get(0);
+        favRepository.deleteById(Id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 }
